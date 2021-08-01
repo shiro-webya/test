@@ -1,0 +1,445 @@
+@charset "utf-8";
+/******************************************************************************
+******************************************************************************
+**
+** style.cssにおいて ( var.3.1.3 )
+** -- baseでは基本タグとサイト大枠のCSS指定
+** -- headerではヘッダーのCSS指定
+** -- global navではグローバルナビのCSS指定
+** -- contentではコンテント・メイン・サイドナビのCSS指定
+** -- footerではフッターのCSS指定
+** -- pagetopではページトップボタンのCSS指定
+** -- indexではトップページのCSS指定
+** -- pageでは汎用ページのCSS指定
+** -- styleでは汎用ページのコンテンツ（データ入れ）で使用する基本タグのCSS指定
+**
+** 注意事項
+** -- CSSの命名規則はApplicatsオリジナルの命名規則を採用しています。
+** -- 初期フォントサイズはreset.cssにて13pxにリセットしています。
+** -- 行間は1.6にリセットしています。
+**        単位は不要です。(スタイル崩れする可能性有)
+** -- コンテンツ内のフォントサイズ・行間は
+**        [ base ]のcontentsクラスで指定しています。
+**        変更する場合はこちらを変更してください。
+**
+******************************************************************************
+******************************************************************************/
+
+/*-------------------------------------------------------------------------------------------------------
+*********************************************************************************************************
+*********************************************************************************************************
+******
+****** PCスタイル
+******
+*********************************************************************************************************
+*********************************************************************************************************
+-------------------------------------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------
+******************************************************************************
+** base
+******************************************************************************
+----------------------------------------------------------------------------*/
+html, body {
+	overflow-x: hidden;
+}
+.w_base {
+	margin: 0 auto;
+	width: 960px;
+}
+/*----------------------------------------------------------------------------
+******************************************************************************
+** header
+******************************************************************************
+----------------------------------------------------------------------------*/
+.hd_bg {
+	background: url(../images/hd_bg_bg.png) repeat-x top left;
+}
+.hd {
+	height: 120px;
+	position: relative;
+}
+.hd_logo {
+	position: absolute;
+	top: 30px;
+	left: 0;
+}
+.hd_logo img {
+	width: 300px;
+	height: auto
+}
+.hd_lang {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+/*----------------------------------------------------------------------------
+******************************************************************************
+** global nav
+******************************************************************************
+----------------------------------------------------------------------------*/
+.nav_bg {
+	background: url(../images/nav_bg_bg.png) repeat-x #000;
+	margin-bottom: 30px;
+}
+.nav {
+	background: url(../images/nav_bg.png) no-repeat;
+	overflow: visible;
+}
+.nav_list {
+	display: flex;
+	width: 100%;
+}
+.nav_list img {
+	transition: All 0.5s ease;
+}
+.nav_list img:hover {
+	opacity: 0
+}
+.nav_list a.current img {
+	opacity: 0
+}
+.nav_list>li {
+	position: relative;
+	z-index: 1000
+}
+.nav_list>li>a {
+	display: block;
+	text-align: center
+}
+.nav_list>li>a:hover,
+.nav_list>li>a.current{
+
+}
+.nav_list>li:hover .nav_clist {
+	display: block;
+	animation: nav_active 1s ease 0s 1 alternate
+}
+@-webkit-keyframes nav_active {
+0% {
+opacity:0
+}
+100% {
+opacity:1
+}
+}
+@keyframes nav_active {
+0% {
+opacity:0
+}
+100% {
+opacity:1
+}
+}
+.nav_clist {
+	background-color: #000;
+	display: none;
+	transition: All 0.5s ease;
+	width: 100%;
+	position: absolute;
+	top: 100%;
+	left: 0
+}
+.nav_clist>li {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+	position: relative
+}
+.nav_clist>li>a {
+	color: #fff;
+	display: block;
+	padding: 10px;
+	text-decoration: none
+}
+.nav_clist>li>a:hover, .nav_clist>li>a.current {
+	opacity: 0.8
+}
+.nav_clist>li:hover .nav_glist {
+	display: block;
+	animation: nav_active 1s ease 0s 1 alternate
+}
+.nav_glist {
+	display: none;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 100%
+}
+.nav_glist>li {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+	border-left: 1px solid rgba(255, 255, 255, 0.4)
+}
+.nav_glist>li>a {
+	background-color: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	display: block;
+	padding: 10px;
+	text-decoration: none
+}
+.nav_glist>li>a:hover, .nav_glist>li>a.current {
+	background-color: #000;
+	box-shadow: 0 0 4px rgba(255, 0, 0, 0.2)
+}
+/*----------------------------------------------------------------------------
+******************************************************************************
+** content
+******************************************************************************
+----------------------------------------------------------------------------*/
+.con_bg {
+	background: url(../images/con_bg.png) no-repeat;
+}
+.con {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 30px 0;
+}
+.main {
+	-webkit-box-ordinal-group: 2;
+	-ms-flex-order: 1;
+	order: 1;
+	width: 700px;
+}
+.side {
+	-webkit-box-ordinal-group: 3;
+	-ms-flex-order: 2;
+	order: 2;
+	width: 230px;
+}
+.side h3 {
+	background-color: #EEE;
+	color: #111;
+	font-size: 1.1em;
+	font-weight: bold;
+	margin-bottom: 6px;
+	padding: 8px;
+	text-align: center
+}
+.side_nav_list li a {
+	background: url(../images/icon_arrow_gray.png) no-repeat left center;
+	border-bottom: 1px solid #CCC;
+	color: #111;
+	display: block;
+	padding: 12px 10px;
+	text-decoration: none
+}
+.side_nav_list li a:hover, .side_nav_list li a.current {
+	text-decoration: underline
+}
+/*----------------------------------------------------------------------------
+******************************************************************************
+** footer
+******************************************************************************
+----------------------------------------------------------------------------*/
+.ft_bg {
+	background: url(../images/ft_bg_bg.png) no-repeat;
+}
+.ft {
+	padding: 3rem 0;
+}
+.ft_copy {
+	font-size: 0.7rem;
+	text-align: center
+}
+/*----------------------------------------------------------------------------
+******************************************************************************
+** pagetop
+******************************************************************************
+----------------------------------------------------------------------------*/
+.pt {
+	border-radius: 50%;
+	background-color: #333;
+	bottom: 30px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 60px;
+	right: 30px;
+	position: fixed;
+	width: 60px;
+	z-index: 100;
+}
+.pt:hover {
+	opacity: 0.6;
+}
+.pt_btn {
+	cursor: pointer;
+	display: block;
+	width: 20px;
+	height: 20px;
+	margin-top: 8px;
+	transform: rotate(45deg);
+	position: relative;
+}
+.pt_btn::before,
+.pt_btn::after{
+	background-color: #FFF;
+	content: "";
+	display: block;
+	top: 0;
+	left: 0;
+	position: absolute;
+}
+.pt_btn::before{
+	width: 7px;
+	bottom: 0;
+}
+.pt_btn::after{
+	height: 7px;
+	right: 0;
+}
+/*----------------------------------------------------------------------------
+******************************************************************************
+** index
+******************************************************************************
+----------------------------------------------------------------------------*/
+.index_main {
+	-webkit-box-ordinal-group: 2;
+	-ms-flex-order: 1;
+	order: 1;
+	width: 700px;
+}
+.index_side {
+	-webkit-box-ordinal-group: 3;
+	-ms-flex-order: 2;
+	order: 2;
+	width: 230px;
+}
+.index_bnr_list li {
+	margin-bottom: 4px
+}
+.index_bnr_list a {
+	padding: 16px 16px 16px 42px;
+	border: 1px solid #000000;
+	border-radius: 3px;
+	display: block;
+	text-decoration: none;
+	background: url(../images/icon_elink_black.png) no-repeat 16px center;
+	color: #000000;
+}
+.index_bnr_list a:hover {
+	background-color: #000;
+	background-image: url(../images/icon_elink_white.png);
+	color: #FFF
+}
+.index_news h2 {
+	margin-bottom: 0px
+}
+.index_news_item {
+	border-bottom: 1px dotted #999;
+	display: flex;
+	align-content: space-between;
+	padding: 10px 0;
+	width: 100%;
+}
+.index_news_item_date {
+	width: 130px;
+}
+.index_news_item_date:before {
+	content: url(../images/icon_circle_arrow_green.gif);
+	vertical-align: bottm;
+	margin-right: 0.2em;
+}
+.index_news_item_ttl {
+	width: calc(100% - 140px);
+}
+.index_news_item_icon_new {
+	display: inline-block;
+	color: #C00;
+	font-size: 0.9em;
+	font-weight: bold;
+	margin-left: 0.3em
+}
+.index_news_item_icon_new:before {
+	content: "NEW"
+}
+.index_news_scrl {
+	max-height: 300px;
+	overflow: auto
+}
+.index_slider_bg {
+}
+/*-- object-fit ver IE11 サーバーアップで動作確認済み -- */
+/*-- 
+.index_slider img {
+	width: 100%;
+	max-height: 300px!important;
+	-o-object-fit:cover!important;
+	object-fit:cover;
+	font-family:'object-fit: cover!important;'
+} -- */
+
+/*----------------------------------------------------------------------------
+******************************************************************************
+** page
+******************************************************************************
+----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------
+******************************************************************************
+** style
+******************************************************************************
+----------------------------------------------------------------------------*/
+.mcon {
+	word-wrap: break-word
+}
+.mcon a img:hover {
+	opacity: 0.8;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease
+}
+.mcon h1 {
+	font-size: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+.mcon h2 {
+	font-size: 1.4rem;
+	margin-bottom: 1rem;
+	margin-top: 1.4rem;
+}
+.mcon h3 {
+	font-size: 1.3rem;
+	margin-bottom: 0.9rem;
+	margin-top: 1.3rem;
+}
+.mcon h4 {
+	font-size: 1.2rem;
+	margin-bottom: 0.7rem;
+	margin-top: 1.2rem;
+}
+.mcon h5, .mcon h6 {
+	font-size: 0.5rem;
+	margin-bottom: 2px;
+	margin-top: 1rem;
+}
+.mcon hr {
+	border: none;
+	border-top: 1px dotted #000
+}
+.mcon iframe {
+	max-width: 100%
+}
+.mcon img {
+	max-width: 100%;
+	height: auto
+}
+.mcon ol {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem
+}
+.mcon ol li {
+	margin-left: 2em;
+	margin-bottom: 0.5rem
+}
+.mcon p {
+	margin-top: 1rem
+}
+.mcon ul {
+	margin-top: 1rem;
+	margin-bottom: 0.5rem
+}
+.mcon ul li {
+	list-style-type: disc;
+	margin-left: 1.5rem;
+	margin-bottom: 0.5rem
+}

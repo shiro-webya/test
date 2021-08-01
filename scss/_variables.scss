@@ -1,0 +1,35 @@
+$base-font-color: #111;
+$base-font-family: "游ゴシック体", YuGothic, "游ゴシック", "Yu Gothic",
+  "メイリオ", sans-serif;
+$base-font-size: 10px;
+$base-font-weight: 500;
+$base-line-height: 1.6;
+$base-site-width: 960px;
+
+// min-width
+$breakpoint-up: (
+  "small": "screen and (min-width: 400px)",
+  "middle": "screen and (min-width: 768px)",
+  "large": "screen and (min-width: 1000px)",
+  "xlarge": "screen and (min-width: 1200px)",
+) !default;
+// max-width
+$breakpoint-down: (
+  "small": "screen and (max-width: 399px)",
+  "middle": "screen and (max-width: 767px)",
+  "large": "screen and (max-width: 999px)",
+  "xlarge": "screen and (max-width: 1199px)",
+) !default;
+
+// @mixinの定義
+@mixin mediaquery-min-width($breakpoint: middle) {
+  @media #{map-get($breakpoint-up, $breakpoint)} {
+    @content;
+  }
+}
+
+@mixin mediaquery-max-width($breakpoint: middle) {
+  @media #{map-get($breakpoint-down, $breakpoint)} {
+    @content;
+  }
+}
